@@ -1,12 +1,12 @@
-import { PipeTransform, Pipe } from '@angular/core';
+import { PipeTransform, Pipe } from '@angular/core'; //Imported modules
 
 import { IProduct } from './product';
 
-@Pipe({
+@Pipe({ //Decoration
     name: 'productFilter'
 })
 
-export class ProductFilterPipe implements PipeTransform {
+export class ProductFilterPipe implements PipeTransform { //Class declaration, Implementing interface
 
     transform( value : IProduct[], filterBy : string ) : IProduct[] {
             filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;

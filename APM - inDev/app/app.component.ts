@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'; //Core Library Module
 
+import { ProductService } from './products/product.service';
 
 @Component({
     // ( function ) { object }
@@ -9,7 +10,9 @@ import { Component } from '@angular/core'; //Core Library Module
             <h1>{{ pageTitle }}</h1>
             <pm-products></pm-products>
         </div>
-    `
+    `,
+    moduleId : module.id,
+    providers : [ ProductService ]
 })
 
 export class AppComponent {
