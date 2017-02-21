@@ -44,7 +44,7 @@
                     </td>
                     <td> {{ product.productName }}</td>
                     <td> {{ product.productCode | lowercase }}</td>
-                    <td> {{ product.realeaseDate }}</td>
+                    <td> {{ product.releaseDate }}</td>
                     <td> {{ product.price | currency: 'USD' : true : '1.2-2' | lowercase }}</td>
                     <td> <ai-star [rating] = 'product.starRating'
                             (ratingClicked) = 'onRatingClicked($event)'> </ai-star></td>

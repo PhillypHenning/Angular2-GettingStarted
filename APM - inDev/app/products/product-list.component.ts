@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit{  //Class declaration, imple
     imageMargin: number = 2;
     showImage: boolean = false;
     listFilter: string;
+    errorMessage : string;
     products: IProduct[];
 
     constructor( private _productService : ProductService ){ //Used to register a service object
@@ -24,7 +25,9 @@ export class ProductListComponent implements OnInit{  //Class declaration, imple
         this.showImage = !this.showImage;
     }
     ngOnInit() : void {
-        this.products = this._productService.getProducts(); //Better to use OnInit instead of constructor for initialization
+        this._productService.getProducts()
+            .subscribe( products => this.products = products,
+                        error => this.errorMessage = <any>error); //Better to use OnInit instead of constructor for initialization
     }
     onRatingClicked( message : string ) : void {
         this.pageTitle = 'Product List ' + message;
