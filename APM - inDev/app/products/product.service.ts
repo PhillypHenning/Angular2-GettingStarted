@@ -10,11 +10,18 @@ import { IProduct } from './product';
 @Injectable()
 
 export class ProductService{
-    private _productUrl = 'api/products/products.json';
+    private _productUrl : string = 'api/products/products.json';
 
-    constructor( private _http : Http ){ } //Creates a instance within h
+    constructor( private _http : Http ){ }
 
     getProducts() : Observable<IProduct[]> {
+        /*
+            Create a instance of Observable of type <IProduct>
+            Place into the _http a instance of the _productUrl
+            .map creates a instance of Response called response, for each data index of IProduct
+            .do
+            .catch
+         */
         return this._http.get( this._productUrl )
             .map(( response : Response ) => <IProduct[]> response.json())
             .do(data => console.log('All ' + JSON.stringify(data)))
