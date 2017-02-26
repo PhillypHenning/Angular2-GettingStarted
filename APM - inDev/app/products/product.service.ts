@@ -38,6 +38,15 @@ export class ProductService{
             // Call local handle error method
     }
 
+    getProduct( id : number ) : Observable<IProduct> {
+     // Returns a Observable sequence of a single IProduct
+        return this._http.get( this._productUrl )
+            .map(( response : Response ) => <IProduct[]> response.json())
+            .do( data => console.log('Single Item: ' + JSON.stringify( data[ id - 1] )))
+            // id - 1 for index considerations
+            .catch( this.handleError );
+    }
+
     private handleError( error : Response ) {
      console.error(error);
      return Observable.throw(error.json().error || 'Server error');
